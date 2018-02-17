@@ -5,15 +5,15 @@ class Token():
     Basic settings for an NEP5 Token and crowdsale
     """
 
-    name = 'NEX Template'
+    name = 'Imusify'
 
-    symbol = 'NXT'
+    symbol = 'IMU'
 
     decimals = 8
 
     # This is the script hash of the address for the owner of the token
     # This can be found in ``neo-python`` with the walet open, use ``wallet`` command
-    owner = b'\xaf\x12\xa8h{\x14\x94\x8b\xc4\xa0\x08\x12\x8aU\nci[\xc1\xa5'
+    owner = b'#\xba\'\x03\xc52c\xe8\xd6\xe5"\xdc2 39\xdc\xd8\xee\xe9'
 
     in_circulation_key = b'in_circulation'
 

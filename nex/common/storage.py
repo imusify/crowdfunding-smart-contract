@@ -1,4 +1,5 @@
 from boa.blockchain.vm.Neo.Storage import GetContext, Get, Put, Delete
+from boa.code.builtins import concat
 
 
 class StorageAPI():
@@ -18,3 +19,7 @@ class StorageAPI():
     def delete(self, key):
 
         Delete(self.ctx, key)
+
+    def get_crowdfunding_meta_key(self, address):
+        key = concat(address, "crowdfunding_meta")
+        return key

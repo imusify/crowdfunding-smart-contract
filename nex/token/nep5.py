@@ -97,6 +97,7 @@ class NEP5Handler():
                 print("insufficient funds")
                 return False
 
+            # Update sender balance
             if from_val == amount:
                 storage.delete(t_from)
 
@@ -104,6 +105,8 @@ class NEP5Handler():
                 difference = from_val - amount
                 storage.put(t_from, difference)
 
+            # TODO: Check if target is crowdfunding
+            # If no crowdfunding, do normal transfer
             to_value = storage.get(t_to)
 
             to_total = to_value + amount
@@ -139,6 +142,9 @@ class NEP5Handler():
         if from_balance < amount:
             print("Insufficient tokens in from balance")
             return False
+
+        # TODO: Check if target is crowdfunding
+        # If no crowdfunding, do normal transfer
 
         to_balance = storage.get(t_to)
 

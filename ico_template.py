@@ -16,6 +16,7 @@ from nex.common.txio import Attachments,get_asset_attachments
 from nex.token.mytoken import Token
 from nex.token.nep5 import NEP5Handler
 from nex.token.crowdsale import Crowdsale
+from nex.token.crowdfunding import crowdfunding_create
 
 
 def Main(operation, args):
@@ -80,14 +81,17 @@ def Main(operation, args):
             if operation == 'mintTokens':
                 return sale.exchange(token)
 
-            if operation == 'crowdsale_register':
-                return sale.kyc_register(args, token)
+            # if operation == 'crowdsale_register':
+            #     return sale.kyc_register(args, token)
 
-            if operation == 'crowdsale_status':
-                return sale.kyc_status(args)
+            # if operation == 'crowdsale_status':
+            #     return sale.kyc_status(args)
 
             if operation == 'crowdsale_available':
                 return token.crowdsale_available_amount()
+
+            if operation == 'crowdfunding_create':
+                return crowdfunding_create(args)
 
             return 'unknown operation'
 
@@ -117,6 +121,4 @@ def deploy(token: Token):
         return True
 
     return False
-
-
 

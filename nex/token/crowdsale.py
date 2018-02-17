@@ -143,7 +143,8 @@ class Crowdsale():
 
         # if youre accepting neo, use this
 
-        if attachments.neo_attached == 0:
+        if attachments.neo_attached == 0 and attachments.gas_attached == 0:
+            print("no neo or gas attached")
             return False
 
         # the following looks up whether an address has been
@@ -151,8 +152,8 @@ class Crowdsale():
         # this is not required for operation of the contract
 
 #        status = self.get_kyc_status(attachments.sender_addr, storage)
-        if not self.get_kyc_status(attachments.sender_addr, storage):
-            return False
+        #if not self.get_kyc_status(attachments.sender_addr, storage):
+        #    return False
 
 #        print("Will check can exchange") # @TODO [Compiler FIX] removing this print statement breaks the execution of this method in v 0.2.0 and below
 #                                           @TODO Fixed in version 0.2.1
