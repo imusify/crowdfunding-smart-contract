@@ -1,82 +1,9 @@
-<p align="center">
-  <img
-    src="http://neonexchange.org/img/NEX-logo.svg"
-    width="125px;">
-    
-</p>
-<h3 align="center">Neo ICO Template</h3>
-<p align="center">A template for NEP5 Compliant Tokens on the NEO platform</p>
-<hr/>
-
-#### Considerations
-
-An article describing this template is available here:
-
-https://medium.com/neon-exchange/nex-ico-template-4ca7ba19fc8b
-
-#### Requirements
-
-Usage requires Python 3.4 or 3.5.
+neo> build imusc/ico_template.py test 0710 05 True False crowdfunding_create ["AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y", "AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q", "AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW"]
+neo> build imusc/ico_template.py test 0710 05 True False crowdfunding_test ["AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y"]
 
 
-#### Installation
-
-Clone the repository and navigate into the project directory. 
-Make a Python 3 virtual environment and activate it via
-
-```shell
-python3 -m venv venv
-source venv/bin/activate
-```
-
-or to explicitly install Python 3.5 via
-
-    virtualenv -p /usr/local/bin/python3.5 venv
-    source venv/bin/activate
-
-Then install the requirements via
-
-```shell
-pip install -r requirements.txt
-```
-
-#### Compilation
-
-The template may be compiled as follows
-
-```python
-from boa.compiler import Compiler
-
-Compiler.load_and_save('ico_template.py')
-```
-
-
-This will compile your template to `ico_template.avm`
-
-
-#### Testnet Deployed Details
-
-For testing purposes, this template is deployed on testnet with the following contract script hash:
-
-`0b6c1f919e95fe61c17a7612aebfaf4fda3a2214`
-
-```json
-{
-    "code": {
-        "parameters": "0710",
-        "hash": "0b6c1f919e95fe61c17a7612aebfaf4fda3a2214",
-        "returntype": 5,
-        "script": ".. omitted .."
-    },
-    "version": 0,
-    "code_version": ".2",
-    "name": "NEX Ico Template",
-    "author": "localhuman",
-    "description": "An ICO Template",
-    "properties": {
-        "dynamic_invoke": false,
-        "storage": true
-    },
-    "email": "tom@neonexchange.org"
-}
-```
+AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q    b'\x9c\xd87)\x13\xd6\xec\xb2hjWX\x89\x82\x15\xc3\x02\x8f\xc8m'
+AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW    b'\xcb\x8f\x12w\xb0e\xdb\xbaR\xe2\xb8\xaat\xfa@P(\xe7k:'
+ALe9nG3WZX7PAEmHrhDA3BH6GW6KvdGMMn
+AaqtL6v6ggr3kwgC9Pp9MdZd4TVzWTEVQq
+AWoS4kkKZfysbmYnREcj23dQYhaSZ1ShSn
