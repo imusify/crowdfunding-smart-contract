@@ -20,6 +20,10 @@ class StorageAPI():
 
         Delete(self.ctx, key)
 
-    def get_crowdfunding_meta_key(self, address):
+    def get_crowdfunding_members_key(self, address):
         key = concat(address, "crowdfunding_meta")
+        return key
+
+    def get_crowdfunding_total_key(self, address):
+        key = concat(address, "crowdfunding_total")
         return key

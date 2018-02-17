@@ -4,6 +4,7 @@ from boa.code.builtins import concat
 
 from nex.token.mytoken import Token
 from nex.common.storage import StorageAPI
+from nex.token.crowdfunding import is_crowdfunding_address, crowdfunding_get_members
 
 
 OnTransfer = RegisterAction('transfer', 'addr_from', 'addr_to', 'amount')
@@ -105,8 +106,30 @@ class NEP5Handler():
                 difference = from_val - amount
                 storage.put(t_from, difference)
 
-            # TODO: Check if target is crowdfunding
-            # If no crowdfunding, do normal transfer
+            # Check if target is crowdfunding. If not, do normal transfer.
+            is_crowdfunding = is_crowdfunding_address(t_to)
+            if is_crowdfunding:
+                Notify("is_crowdfunding!")
+                members = crowdfunding_get_members(t_to)
+                num_members = len(members)
+                amount_per_member = amount / num_members
+                msg = ["Crowdfunding. Splitting amount across members:", num_members, "amount per member:", amount_per_member]
+                Notify(msg)
+                for member in members:
+                    to_value = storage.get(member)
+                    to_total = to_value + amount_per_member
+                    storage.put(member, to_total)
+                    OnTransfer(t_from, member, amount_per_member)
+
+                # Increase the crowdfunding total amount
+                crowdfunding_total_key = storage.get_crowdfunding_total_key(t_to)
+                crowdfunding_total = storage.get(crowdfunding_total_key)
+                crowdfunding_total += amount
+                storage.put(crowdfunding_total_key, crowdfunding_total)
+
+                # All done in case of crowdfunding
+                return True
+
             to_value = storage.get(t_to)
 
             to_total = to_value + amount

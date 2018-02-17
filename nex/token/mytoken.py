@@ -31,10 +31,10 @@ class Token():
     max_exchange_limited_round = 500 * 40 * 100000000
 
     # when to start the crowdsale
-    block_sale_start = 875000
+    block_sale_start = 1
 
     # when to end the initial limited round
-    limited_round_end = 875000 + 10000
+    limited_round_end = 1 + 10000000
 
 
     def crowdsale_available_amount(self):

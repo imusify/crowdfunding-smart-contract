@@ -13,7 +13,7 @@ def crowdfunding_create(args):
     storage = StorageAPI()
 
     crowdfunding_address = args[0]
-    crowdfunding_meta_key = storage.get_crowdfunding_meta_key(crowdfunding_address)
+    crowdfunding_meta_key = storage.get_crowdfunding_members_key(crowdfunding_address)
     print(crowdfunding_meta_key)
 
     # Check for minimum number of arguments
@@ -50,10 +50,19 @@ def crowdfunding_create(args):
     print(member_addresses)
 
 
+def is_crowdfunding_address(crowdfunding_address):
+    storage = StorageAPI()
+    crowdfunding_meta_key = storage.get_crowdfunding_members_key(crowdfunding_address)
+    addresses = storage.get(crowdfunding_meta_key)
+    if len(addresses) == 0:
+        return False
+    return True
+
+
 def crowdfunding_get_members(crowdfunding_address):
     storage = StorageAPI()
 
-    crowdfunding_meta_key = storage.get_crowdfunding_meta_key(crowdfunding_address)
+    crowdfunding_meta_key = storage.get_crowdfunding_members_key(crowdfunding_address)
     print(crowdfunding_meta_key)
 
     # Check if this address or crowdfunding_meta already exists
