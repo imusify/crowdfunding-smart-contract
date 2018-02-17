@@ -16,7 +16,7 @@ from nex.common.txio import Attachments,get_asset_attachments
 from nex.token.mytoken import Token
 from nex.token.nep5 import NEP5Handler
 from nex.token.crowdsale import Crowdsale
-from nex.token.crowdfunding import crowdfunding_create, crowdfunding_test
+from nex.token.crowdfunding import crowdfunding_create, crowdfunding_get_members
 
 
 def Main(operation, args):
@@ -94,7 +94,14 @@ def Main(operation, args):
                 return crowdfunding_create(args)
 
             if operation == 'crowdfunding_test':
-                return crowdfunding_test(args)
+                crowdfunding_address = args[0]
+                member_addresses = crowdfunding_get_members(crowdfunding_address)
+                if not member_addresses:
+                    return False
+
+                Notify("Member addresses:")
+                Notify(member_addresses)
+                return True
 
             return 'unknown operation'
 

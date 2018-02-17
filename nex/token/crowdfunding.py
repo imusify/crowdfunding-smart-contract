@@ -50,10 +50,9 @@ def crowdfunding_create(args):
     print(member_addresses)
 
 
-def crowdfunding_test(args):
+def crowdfunding_get_members(crowdfunding_address):
     storage = StorageAPI()
 
-    crowdfunding_address = args[0]
     crowdfunding_meta_key = storage.get_crowdfunding_meta_key(crowdfunding_address)
     print(crowdfunding_meta_key)
 
@@ -64,11 +63,10 @@ def crowdfunding_test(args):
         return False
 
     n = len(addresses)
-    print("Crowdfunding found")
-    Notify(n)
-
     num_addresses = n / 20
-    Notify(num_addresses)
+
+    msg = ["Crowdfunding found. Members:", num_addresses]
+    Notify(msg)
 
     address_list = []
     i = 0
@@ -78,6 +76,7 @@ def crowdfunding_test(args):
         address_list.append(addr)
         i += 1
 
-    Notify(address_list)
+    return address_list
 
 
+# def crowdfunding_test(args):
