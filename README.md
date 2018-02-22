@@ -21,7 +21,7 @@ Deploy
 
 Mint some tokens
 
-    testinvoke 95ed79af690e274ad6c5594c4496daf72f5832b6 mintTokens [] --attach-neo=5
+    testinvoke 95ed79af690e274ad6c5594c4496daf72f5832b6 mintTokens [] --attach-neo=1
     testinvoke 95ed79af690e274ad6c5594c4496daf72f5832b6 balanceOf ["AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y"]
 
 Import token to neo-python wallet
@@ -39,6 +39,10 @@ Check balances
     testinvoke 95ed79af690e274ad6c5594c4496daf72f5832b6 balanceOf ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
     testinvoke 95ed79af690e274ad6c5594c4496daf72f5832b6 balanceOf ["AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q"]
     testinvoke 95ed79af690e274ad6c5594c4496daf72f5832b6 balanceOf ["AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW"]
+
+Get crowdfunding total contributions
+
+    testinvoke 95ed79af690e274ad6c5594c4496daf72f5832b6 crowdfunding_total ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
 
 Test
 
