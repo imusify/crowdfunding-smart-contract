@@ -1,14 +1,14 @@
-neo> build imusc/ico_template.py test 0710 05 True False crowdfunding_create ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX", "AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q", "AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW"]
-neo> build imusc/ico_template.py test 0710 05 True False crowdfunding_test ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
+Example addresses:
 
+    AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q    b'\x9c\xd87)\x13\xd6\xec\xb2hjWX\x89\x82\x15\xc3\x02\x8f\xc8m'
+    AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW    b'\xcb\x8f\x12w\xb0e\xdb\xbaR\xe2\xb8\xaat\xfa@P(\xe7k:'
 
-AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q    b'\x9c\xd87)\x13\xd6\xec\xb2hjWX\x89\x82\x15\xc3\x02\x8f\xc8m'
-AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW    b'\xcb\x8f\x12w\xb0e\xdb\xbaR\xe2\xb8\xaat\xfa@P(\xe7k:'
+Build & test the contract
 
+    neo> build imusc/ico_template.py test 0710 05 True False crowdfunding_create ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX", "AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q", "AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW"]
+    neo> build imusc/ico_template.py test 0710 05 True False crowdfunding_test ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
 
------
-
-Setup
+Import to the blockchain
 
     import contract imusc/ico_template.avm 0710 05 True False
 
