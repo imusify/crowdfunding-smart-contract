@@ -17,6 +17,7 @@ from nex.token.mytoken import Token
 from nex.token.nep5 import NEP5Handler
 from nex.token.crowdsale import Crowdsale
 from nex.token.crowdfunding import crowdfunding_create, crowdfunding_get_members
+from nex.token.reward import reward_user, calculate_reward, level_up, level_of
 
 
 def Main(operation, args):
@@ -110,6 +111,25 @@ def Main(operation, args):
 
                 Notify("Member addresses:")
                 Notify(member_addresses)
+                return True
+
+            if operation == 'reward':
+                ## checkwitness
+                address = args[0]
+                
+                ## ...
+                
+                ## use reward_user with address with master wallet
+                Notify("reward pong")
+                return True
+
+            if operation == 'level':
+                address = args[0]
+                
+                ## ...
+                
+                ## use level_of with address
+                Notify("level pong")
                 return True
 
             return 'unknown operation'
