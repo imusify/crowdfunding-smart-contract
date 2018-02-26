@@ -34,7 +34,7 @@ def level_up(address):
     
     level_key = storage.get_level_key(address)
     
-    level = level_of(address)
+    level = level_of(level_key)
     
     new_level = level + 1
     
@@ -92,7 +92,7 @@ def reward_user(address):
     return success
 
 
-def reward_users(address, reward):
+def reward_users(addresses, reward):
     """
     Raise the user level corresponding to address and reward him/her.
     """
@@ -102,10 +102,21 @@ def reward_users(address, reward):
     if not CheckWitness(token.owner):
         print("Must be owner to reward")
         return False
+
+    n = len(address)
+    
+    individual_reward = 0
+    
+    effective_reward = 0
+    
+    while effective_total_reward < reward:
+        individual_reward += 1
+        effective_reward += n
     
     nep = NEP5Handler()
     
-    nep.do_transfer(storage, token.owner, address, reward)
+    for address in addresses:
+        nep.do_transfer(storage, token.owner, address, individual_reward)
     
     return True
     
