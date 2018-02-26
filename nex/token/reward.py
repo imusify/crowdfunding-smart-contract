@@ -16,7 +16,7 @@ def level_of(address):
     
     level_key = storage.get_level_key(address)
     
-    stored_level = storage.get_level_key(level_key)
+    stored_level = storage.get(level_key)
     
     if stored_level:
         level = stored_level
