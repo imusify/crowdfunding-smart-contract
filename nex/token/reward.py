@@ -83,10 +83,30 @@ def reward_user(address):
     
     nep = NEP5Handler()
         
-    level = level_up(address)
+    level = level_up(address) ### you might wanna just set this constant for debugging purposes
         
     reward = calculate_reward(level)
     
-    return nep.do_transfer(storage, token.owner, address, reward)
+    success = nep.do_transfer(storage, token.owner, address, reward)
+    
+    return success
+
+
+def reward_users(address, reward):
+    """
+    Raise the user level corresponding to address and reward him/her.
+    """
+    
+    token = Token()
+    
+    if not CheckWitness(token.owner):
+        print("Must be owner to reward")
+        return False
+    
+    nep = NEP5Handler()
+    
+    nep.do_transfer(storage, token.owner, address, reward)
+    
+    return True
     
     
