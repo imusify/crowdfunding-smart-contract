@@ -1,4 +1,6 @@
 from nex.common.storage import StorageAPI
+from nex.token.mytoken import Token
+from nex.token.nep5 import NEP5Handler
 from boa.code.builtins import concat
 from boa.blockchain.vm.Neo.Runtime import CheckWitness, Notify
     
@@ -24,6 +26,8 @@ def level_of(address):
 
 def level_up(address):
     """
+    Loop up the level of the owner of address. Then raise it
+    by 1, put it back into storage and return the new value.
     """
     
     storage = StorageAPI()
@@ -39,57 +43,50 @@ def level_up(address):
     return new_level
 
 
-def reward_user(address):
+def calculate_reward(address):
     """
+    Apply the calculation function for the user reward.
     """
-    
-    ## to be called from Main upon 'operation == "reward"' if called by master wallet
-    
-    ## make use of 'calculate_reward' below
     
     storage = StorageAPI()
     
-    """
-    C# REFERENCE IMPLEMENTATION
+    level_key = storage.get_level_key(address)
     
-                /// Reward user according to his or her user level
-            
-                byte[] owner = Storage.Get(Storage.CurrentContext, "owner");
-            
-                // if (Runtime.CheckWitness(owner)) // Enable this clause after CoZ contest
-                BigInteger amount = RewardFunction(LevelUp(account));
-
-                Transfer(owner, account, amount);
-
-                return amount;
-    """
+    level = level_of(address)
     
-    return True
-
-
-def calculate_reward(address):
-    """
-    """
+    bonus_factor = 1
     
-    ## make use of 'level_of' below
+    if level > 1: 
+        bonus_factor = 2
+    if level > 3 
+        bonus_factor = 5
+    if level > 9:
+        bonus_factor = 20
     
+    basic_reward = 100000000
+    
+    reward = basic_reward * bonus_factor
+        
+    return reward
+
+
+def reward_user(address):
     """
-    C# REFERENCE IMPLEMENTATION                 <====== WE DO IT BETTER THIS TIME, THOUGH
-    
-            /// Compute user reward depending on user level
-            
-            BigInteger basicReward = 100000000; 
-            // TODO test if I can just use 'factor' here
-            BigInteger bonusFactor = 1;
-
-            /// Quick level up for demonstration purpose before official launch
-            if (level > 1) bonusFactor = 2;
-            if (level > 3) bonusFactor = 5;
-            if (level > 9) bonusFactor = 20;
-
-            return bonusFactor * basicReward;
+    Raise the user level corresponding to address and reward him/her.
     """
     
-    return True
+    token = Token()
+    
+    if not CheckWitness(token.owner):
+        print("Must be owner to reward")
+        return False
+    
+    nep = NEP5Handler()
+        
+    level = level_up(address)
+        
+    reward = calculate_reward(level)
+    
+    return nep.do_transfer(storage, token.owner, address, reward)
     
     
