@@ -113,6 +113,16 @@ def Main(operation, args):
                 Notify(member_addresses)
                 return True
 
+            if operation == 'level':
+                address = args[0]
+                
+                level = level_of(address)
+
+                Notify("Level:")
+                Notify(level)
+                
+                return level
+
             if operation == 'reward':
                 ## checkwitness
                 address = args[0]
@@ -121,15 +131,6 @@ def Main(operation, args):
                 
                 ## use reward_user with address with master wallet
                 Notify("reward pong")
-                return True
-
-            if operation == 'level':
-                address = args[0]
-                
-                ## ...
-                
-                ## use level_of with address
-                Notify("level pong")
                 return True
 
             return 'unknown operation'

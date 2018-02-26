@@ -11,6 +11,8 @@ def reward_user(address):
     
     ## make use of 'calculate_reward' below
     
+    storage = StorageAPI()
+    
     """
     C# REFERENCE IMPLEMENTATION
     
@@ -59,6 +61,8 @@ def level_up(address):
     """
     """
     
+    storage = StorageAPI()
+    
     ## make use of 'level_up' below
     
     """
@@ -76,22 +80,19 @@ def level_up(address):
 
 def level_of(address):
     """
+    Return the level of the user who owns the address. 
     """
     
-    ## to be called from Main upon 'operation == "level"' if called by master wallet
+    level = 0
     
-    """
-    C# REFERENCE IMPLEMENTATION
+    storage = StorageAPI()
     
-            BigInteger nLevel = 0;
-
-            byte[] level = Storage.Get(Storage.CurrentContext, Key("L", account));
-
-            if (level != null)
-                nLevel = level.AsBigInteger();
-
-            return nLevel;
-    """
+    level_key = storage.get_level_key(address)
     
-    return True
+    stored_level = storage.get_level_key(level_key)
+    
+    if stored_level:
+        level = stored_level
+        
+    return level
     
