@@ -126,19 +126,19 @@ def Main(operation, args):
             if operation == 'reward_user':
                 address = args[0]
                 
-                success = reward_user(addresses)
+                success = reward_user(address)
                 
                 if success:
                     Notify("User was rewarded:")
-                    Notify(addresses)
+                    Notify(address)
                     
                 return success
 
             if operation == 'reward_users':
                 addresses = args[0]
-                total_reward = args[1]
+                reward = args[1]
                 
-                success = reward_users(addresses, total_reward)
+                success = reward_users(addresses, reward)
                 
                 if success:
                     Notify("Users were rewarded:")
