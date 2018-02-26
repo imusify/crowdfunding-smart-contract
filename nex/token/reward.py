@@ -1,6 +1,42 @@
 from nex.common.storage import StorageAPI
 from boa.code.builtins import concat
 from boa.blockchain.vm.Neo.Runtime import CheckWitness, Notify
+    
+
+def level_of(address):
+    """
+    Return the level of the user who owns the address. 
+    """
+    
+    level = 0
+    
+    storage = StorageAPI()
+    
+    level_key = storage.get_level_key(address)
+    
+    stored_level = storage.get_level_key(level_key)
+    
+    if stored_level:
+        level = stored_level
+        
+    return level
+    
+
+def level_up(address):
+    """
+    """
+    
+    storage = StorageAPI()
+    
+    level_key = storage.get_level_key(address)
+    
+    level = level_of(address)
+    
+    new_level = level + 1
+    
+    storage.put(level_key, new_level)
+    
+    return new_level
 
 
 def reward_user(address):
@@ -56,43 +92,4 @@ def calculate_reward(address):
     
     return True
     
-
-def level_up(address):
-    """
-    """
-    
-    storage = StorageAPI()
-    
-    ## make use of 'level_up' below
-    
-    """
-    C# REFERENCE IMPLEMENTATION
-    
-            BigInteger newLevel = LevelOf(account) + 1;
-            
-            Storage.Put(Storage.CurrentContext, Key("L", account), newLevel);
-            
-            return newLevel;
-    """
-    
-    return True
-    
-
-def level_of(address):
-    """
-    Return the level of the user who owns the address. 
-    """
-    
-    level = 0
-    
-    storage = StorageAPI()
-    
-    level_key = storage.get_level_key(address)
-    
-    stored_level = storage.get_level_key(level_key)
-    
-    if stored_level:
-        level = stored_level
-        
-    return level
     
