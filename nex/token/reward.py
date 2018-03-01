@@ -58,7 +58,7 @@ def calculate_reward(address):
     
     if level > 1: 
         bonus_factor = 2
-    if level > 3 
+    if level > 3: 
         bonus_factor = 5
     if level > 9:
         bonus_factor = 20
@@ -82,6 +82,8 @@ def reward_user(address):
         return False
     
     nep = NEP5Handler()
+
+    storage = StorageAPI()
         
     level = level_up(address) ### you might wanna just set this constant for debugging purposes
         
@@ -109,11 +111,13 @@ def reward_users(addresses, reward):
     
     effective_reward = 0
     
-    while effective_total_reward < reward:
+    while effective_reward < reward:
         individual_reward += 1
         effective_reward += n
     
     nep = NEP5Handler()
+
+    storage = StorageAPI()
     
     for address in addresses:
         nep.do_transfer(storage, token.owner, address, individual_reward)
