@@ -28,6 +28,6 @@ class StorageAPI():
         key = concat(address, "crowdfunding_total")
         return key
 
-    def get_level_of_key(self, address):
+    def get_level_key(self, address):
         key = concat(address, "level")
         return key
