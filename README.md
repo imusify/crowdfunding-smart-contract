@@ -17,21 +17,21 @@ Import to the blockchain
 
     import contract imusc/ico_template.avm 0710 05 True False
 
-get hash (eg. 0x44786ca318d2b590afff89130bd3cb307adaa2d1)
+get hash (eg. 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94)
 
 Deploy
 
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 deploy []
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 circulation []
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 deploy []
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 circulation []
 
 Mint some tokens
 
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 mintTokens [] --attach-neo=1
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 balanceOf ["AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 mintTokens [] --attach-neo=1
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 balanceOf ["AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y"]
 
 Import token to neo-python wallet
 
-    import token 0x44786ca318d2b590afff89130bd3cb307adaa2d1
+    import token 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94
 
 ----
 
@@ -40,25 +40,25 @@ CROWDFUNDING
 
 Create a new crowdfunding address (AJWvenTD6n7ya56AuiKS83oj36zCD65aqX) with 2 members:
 
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 crowdfunding_create ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX", "AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q", "AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 crowdfunding_create ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX", "AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q", "AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW"]
 
 Check balances
 
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 balanceOf ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 balanceOf ["AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q"]
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 balanceOf ["AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 balanceOf ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 balanceOf ["AW5C5LZjyr1jBQuZZg3kAmmri6ic32yH2q"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 balanceOf ["AaLCDGQMuKdpNCkSVWVLry8MyvaXhbAXGW"]
 
 Get crowdfunding total contributions
 
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 crowdfunding_total ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 crowdfunding_total ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
 
 Get crowdfunding number of contributions
 
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 crowdfunding_numcontrib ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 crowdfunding_numcontrib ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
 
 Test
 
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 crowdfunding_test ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 crowdfunding_test ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
 
 Send funds to the crowdfunding address
 
@@ -70,5 +70,5 @@ Send funds to the crowdfunding address
 REWARDS
 =======
 
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 level ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
-    testinvoke 0x44786ca318d2b590afff89130bd3cb307adaa2d1 reward_user ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 level ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
+    testinvoke 0x08b9f4c2e0110b8eb650f89bbcaaaaa379497a94 reward_user ["AJWvenTD6n7ya56AuiKS83oj36zCD65aqX"]
