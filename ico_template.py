@@ -17,7 +17,7 @@ from nex.token.mytoken import Token
 from nex.token.nep5 import NEP5Handler
 from nex.token.crowdsale import Crowdsale
 from nex.token.crowdfunding import crowdfunding_create, crowdfunding_get_members
-from nex.token.reward import reward_users, reward_user, calculate_reward, level_up, level_of
+from nex.token.reward import reward_user, calculate_reward, level_up, level_of
 
 
 def Main(operation, args):
