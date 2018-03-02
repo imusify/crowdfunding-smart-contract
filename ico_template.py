@@ -124,36 +124,17 @@ def Main(operation, args):
 
             if operation == 'level':
                 address = args[0]
-                
                 level = level_of(address)
-
                 Notify("Level:")
                 Notify(level)
-                
                 return level
 
             if operation == 'reward_user':
                 address = args[0]
-                
                 success = reward_user(address)
-                
                 if success:
                     Notify("User was rewarded:")
                     Notify(address)
-                    
-                return success
-
-            if operation == 'reward_users':
-                addresses = args[0]
-                reward = args[1]
-                
-                success = reward_users(addresses, reward)
-                
-                if success:
-                    Notify("Users were rewarded:")
-                    for address in addresses:
-                        Notify(address)
-                    
                 return success
 
             return 'unknown operation'
