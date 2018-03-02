@@ -104,8 +104,7 @@ class Crowdsale():
         exchanged_tokens = attachments.neo_attached * token.tokens_per_neo / 100000000
 
         # if you want to exchange gas instead of neo, use this
-        # exchanged_tokens += attachments.gas_attached * token.tokens_per_gas / 100000000
-
+        exchanged_tokens += attachments.gas_attached * token.tokens_per_gas / 100000000
 
         # add it to the the exchanged tokens and persist in storage
         new_total = exchanged_tokens + current_balance

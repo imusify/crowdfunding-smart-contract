@@ -127,6 +127,12 @@ class NEP5Handler():
                 crowdfunding_total += amount
                 storage.put(crowdfunding_total_key, crowdfunding_total)
 
+                # Increase the crowdfunding number of contributions
+                crowdfunding_numcontrib_key = storage.get_crowdfunding_numcontrib_key(t_to)
+                crowdfunding_numcontrib = storage.get(crowdfunding_numcontrib_key)
+                crowdfunding_numcontrib += 1
+                storage.put(crowdfunding_numcontrib_key, crowdfunding_numcontrib)
+
                 # All done in case of crowdfunding
                 return True
 

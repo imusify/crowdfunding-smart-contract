@@ -102,6 +102,15 @@ def Main(operation, args):
                 Notify(msg)
                 return crowdfunding_total
 
+            if operation == 'crowdfunding_numcontrib':
+                storage = StorageAPI()
+                crowdfunding_address = args[0]
+                crowdfunding_numcontrib_key = storage.get_crowdfunding_numcontrib_key(crowdfunding_address)
+                crowdfunding_numcontrib = storage.get(crowdfunding_numcontrib_key)
+                msg = ["crowdfunding_numcontrib", crowdfunding_numcontrib]
+                Notify(msg)
+                return crowdfunding_numcontrib
+
             if operation == 'crowdfunding_test':
                 crowdfunding_address = args[0]
                 member_addresses = crowdfunding_get_members(crowdfunding_address)
